@@ -8,9 +8,9 @@ fake = Faker()
 
 current_currency = 'USD'
 
-
 def generate_students():
     count = int(request.args.get('count', 1000))
+    count = max(1, min(count, 999))
     students = []
 
     for _ in range(count):
@@ -73,7 +73,7 @@ def get_bitcoin_value(currency=current_currency, convert=100):
 @app.route('/generate_students', methods=['GET'])
 def generate_students_endpoint():
     students = generate_students()
-    return render_template('students.html', students=students)
+    return render_template('students.html', students=students, limit=1000)
 
 
 @app.route('/get_bitcoin_value', methods=['GET'])
