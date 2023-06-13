@@ -42,17 +42,16 @@
         .student-details {
             color: #888;
             font-size: 12px;
-            display: none;  /* Изначально скрываем данные студента */
+            display: none;
         }
     </style>
     <script>
-        // Функция для обработки события клика на студента
         function toggleStudentData(studentId) {
             var studentDetails = document.getElementById('student-details-' + studentId);
             if (studentDetails.style.display === 'none') {
-                studentDetails.style.display = 'block';  // Показываем данные студента
+                studentDetails.style.display = 'block';
             } else {
-                studentDetails.style.display = 'none';   // Скрываем данные студента
+                studentDetails.style.display = 'none';
             }
         }
     </script>
@@ -64,7 +63,7 @@
         <li onclick="toggleStudentData({{ loop.index0 }})">
             <span class="student-name">{{ student.first_name }} {{ student.last_name }}</span><br>
             <span class="student-email">{{ student.email }}</span><br>
-            <span class="student-details" id="student-details-{{ loop.index0 }}">  <!-- Используем уникальный идентификатор для каждого студента -->
+            <span class="student-details" id="student-details-{{ loop.index0 }}">
                 Пароль: {{ student.password }}<br>
                 Дата рождения: {{ student.birthday }}
             </span>
